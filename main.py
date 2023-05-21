@@ -212,7 +212,7 @@ def main():
     parser.add_argument('--lr', type=float, default=0.001)
     parser.add_argument('--epochs', type=int, default=500)
     parser.add_argument('--eval-steps', type=int, default=1)
-    parser.add_argument('--runs', type=int, default=10)
+    parser.add_argument('--runs', type=int, default=1)
     parser.add_argument('--negative-sampler', type=str, default='global', choices=['global', 'strict_global', 'persource'])
     parser.add_argument('--n-neg', type=int, default=1)
     parser.add_argument('--eval-metric', type=str, default='hits')
@@ -235,7 +235,7 @@ def main():
     device = f'cuda:{args.device}' if args.device > -1 else 'cpu'
     device = torch.device(device)
 
-    dataset = DglLinkPropPredDataset(name=args.dataset, root='/path/to/dataset/')
+    dataset = DglLinkPropPredDataset(name=args.dataset, root='data/')
     graph = dataset[0]
 
     if hasattr(graph, 'x'):
